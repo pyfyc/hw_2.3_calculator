@@ -12,38 +12,38 @@ class CalcServiceImplTest {
 
     @Test
     void printSum() {
-        String result = out.printSum(PRINT_SUM_NUM1_1, PRINT_SUM_NUM2_1);
-        assertEquals(PRINT_SUM_RESULT_1, result);
-        String result2 = out.printSum(PRINT_SUM_NUM1_2, PRINT_SUM_NUM2_2);
-        assertEquals(PRINT_SUM_RESULT_2, result2);
+        String result1 = out.printSum(FIVE, FIVE);
+        assertEquals(FIVE + " + " + FIVE + " = " + ((int) FIVE + FIVE), result1);
+        String result2 = out.printSum(THREE, TWO);
+        assertEquals(THREE + " + " + TWO + " = " + ((int) THREE + TWO), result2);
     }
 
     @Test
     void printDifference() {
-        String result = out.printDifference(PRINT_DIFF_NUM1_1, PRINT_DIFF_NUM2_1);
-        assertEquals(PRINT_DIFF_RESULT_1, result);
-        String result2 = out.printDifference(PRINT_DIFF_NUM1_2, PRINT_DIFF_NUM2_2);
-        assertEquals(PRINT_DIFF_RESULT_2, result2);
+        String result = out.printDifference(FIVE, FIVE);
+        assertEquals(FIVE + " - " + FIVE + " = " + ((int) FIVE - FIVE), result);
+        String result2 = out.printDifference(FIVE, TWO);
+        assertEquals(FIVE + " - " + TWO + " = " + ((int) FIVE - TWO), result2);
     }
 
     @Test
     void printMultiplicationResult() {
-        String result = out.printMultiplicationResult(PRINT_MULTI_NUM1_1, PRINT_MULTI_NUM2_1);
-        assertEquals(PRINT_MULTI_RESULT_1, result);
-        String result2 = out.printMultiplicationResult(PRINT_MULTI_NUM1_2, PRINT_MULTI_NUM2_2);
-        assertEquals(PRINT_MULTI_RESULT_2, result2);
+        String result = out.printMultiplicationResult(FIVE, THREE);
+        assertEquals(FIVE + " * " + THREE + " = " + ((int) FIVE * THREE), result);
+        String result2 = out.printMultiplicationResult(FIVE, ZERO);
+        assertEquals(FIVE + " * " + ZERO + " = " + ((int) FIVE * ZERO), result2);
     }
 
     @Test
     void printDivisionResult() {
-        String result = out.printDivisionResult(PRINT_DIV_NUM1_1, PRINT_DIV_NUM2_1);
-        assertEquals(PRINT_DIV_RESULT_1, result);
-        String result2 = out.printDivisionResult(PRINT_DIV_NUM1_2, PRINT_DIV_NUM2_2);
-        assertEquals(PRINT_DIV_RESULT_2, result2);
+        String result = out.printDivisionResult(FOUR, TWO);
+        assertEquals(FOUR + " / " + TWO + " = " + ((double) FOUR / TWO), result);
+        String result2 = out.printDivisionResult(FIVE, TWO);
+        assertEquals(FIVE + " / " + TWO + " = " + ((double) FIVE / TWO), result2);
     }
 
     @Test
     void throwExceptionWhenNum2IsZero() {
-        assertThrows(IllegalArgumentException.class, () -> out.printDivisionResult(PRINT_DIV_NUM1_3, PRINT_DIV_NUM2_3));
+        assertThrows(IllegalArgumentException.class, () -> out.printDivisionResult(ONE, ZERO));
     }
 }
