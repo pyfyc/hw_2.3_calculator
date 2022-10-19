@@ -16,7 +16,7 @@ public class CalcServiceImpl implements CalcService{
     @Override
     public String printSum(Integer num1, Integer num2) {
         if (num1 == null || num2 == null) {
-            return ERR_MISSING_PARAMS;
+            throw new IllegalArgumentException(ERR_MISSING_PARAMS);
         }
         int result = num1 + num2;
         return num1 + " + " + num2 + " = " + result;
@@ -25,7 +25,7 @@ public class CalcServiceImpl implements CalcService{
     @Override
     public String printDifference(Integer num1, Integer num2) {
         if (num1 == null || num2 == null) {
-            return ERR_MISSING_PARAMS;
+            throw new IllegalArgumentException(ERR_MISSING_PARAMS);
         }
         int result = num1 - num2;
         return num1 + " - " + num2 + " = " + result;
@@ -34,7 +34,7 @@ public class CalcServiceImpl implements CalcService{
     @Override
     public String printMultiplicationResult(Integer num1, Integer num2) {
         if (num1 == null || num2 == null) {
-            return ERR_MISSING_PARAMS;
+            throw new IllegalArgumentException(ERR_MISSING_PARAMS);
         }
         int result = num1 * num2;
         return num1 + " * " + num2 + " = " + result;
@@ -43,18 +43,11 @@ public class CalcServiceImpl implements CalcService{
     @Override
     public String printDivisionResult(Integer num1, Integer num2) {
         if (num1 == null || num2 == null) {
-            return ERR_MISSING_PARAMS;
-        }
-        if (num2 == 0) {
-            return ERR_DIV_BY_ZERO;
+            throw new IllegalArgumentException(ERR_MISSING_PARAMS);
+        } else if (num2 == 0) {
+            throw new IllegalArgumentException(ERR_DIV_BY_ZERO);
         } else {
-            // If division result is int - print the result in int format,
-            // if it is float - print in float format.
-            if (num1 % num2 == 0) {
-                return num1 + " / " + num2 + " = " + (num1 / num2);
-            } else {
-                return num1 + " / " + num2 + " = " + ((double) num1 / num2);
-            }
+            return num1 + " / " + num2 + " = " + ((double) num1 / num2);
         }
     }
 }
